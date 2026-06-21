@@ -9,13 +9,16 @@ function debounce(fn, delay) {
     function debounced (...args){
         if(timer) {
             clearTimeout(timer)
+            timer=null
         } 
         timer=setTimeout(()=>{
             fn.apply(this,args)
+            timer=null
         },delay)
         return ()=>{
             if(timer){
                 clearTimeout(timer)
+                timer=null
             }
         }
     }
