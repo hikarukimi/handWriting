@@ -78,32 +78,6 @@ function printReport() {
 }
 
 // ============================================
-// 节流函数实现（修复版）
-// ============================================
-
-function throttle(fn, time) {
-    let timer = null;
-
-    function throttled(...args) {
-        if (timer) {
-            return;
-        }
-        
-        timer = setTimeout(() => {
-            fn.apply(this, args);
-            timer = null;
-        }, time);
-    }
-
-    throttled.cancel = function() {
-        clearTimeout(timer);
-        timer = null;
-    };
-
-    return throttled;
-}
-
-// ============================================
 // 测试用例
 // ============================================
 
